@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/6b5b0823f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>WeatherApp</title>
+  </head>
+  <body>
+    <!-- BACKGROUND IMAGE -->
+    <img class="mobile-background-img" src="/imgs/133823.jpg" alt="" />
+    <img
+      class="desktop-background-img"
+      src="/imgs/20200528_140936.jpg"
+      alt=""
+    />
+    <!-- SEARCH INPUT -->
+    <div class="content-container">
+      <div class="search-container">
+        <form>
+          <input
+            type="text"
+            name="location"
+            id="location-input"
+            placeholder="Enter a location.."
+          />
+          <button id="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+      <!-- CURRENT DAY ONE -->
+      <div id="results-cont">
+        <div class="day-cont" id="current-cont">
+          <div id="current-cont-one">
+            <h2 id="location-result"></h2>
+            <h1 id="current-condition"></h1>
+            <img
+              id="current-condition-icon"
+              src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+              alt="weather icon"
+            />
+          </div>
+          <div id="current-cont-two">
+            <ul>
+              <li>Temperature: <span id="current-tempc"></span></li>
+              <li>Humidity: <span id="current-humidity"></span></li>
+              <li>Wind speed: <span id="current-windmph"></span></li>
+              <li>
+                Sunrise:
+                <span id="current-sunrise"></span>
+              </li>
+              <li>
+                Sunset:
+                <span id="current-sunset"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- DAY TWO -->
+        <div class="day-cont small-day-cont">
+          <h1 id="daytwo-date">Date</h1>
+          <div id="daytwo-cont">
+            <div class="day-cont-one">
+              <h2 id="daytwo-condition"></h2>
+              <img
+                id="daytwo-condition-icon"
+                src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+                alt="weather icon"
+              />
+            </div>
+            <div class="day-cont-two">
+              <ul>
+                <li>
+                  Average Temperature:
+                  <span id="daytwo-avgtempc"></span>
+                </li>
+                <li>
+                  Max wind speed:
+                  <span id="daytwo-maxwindmph"></span>
+                </li>
+                <li>
+                  Sunrise:
+                  <span id="daytwo-sunrise"></span>
+                </li>
+                <li>
+                  Sunset:
+                  <span id="daytwo-sunset"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- DAY THREE -->
+        <div class="day-cont small-day-cont">
+          <h1 id="daythree-date">Date</h1>
+          <div id="daythree-cont">
+            <div class="day-cont-one">
+              <h2 id="daythree-condition"></h2>
+              <img
+                id="daythree-condition-icon"
+                src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+                alt="weather icon"
+              />
+            </div>
+            <div class="day-cont-two">
+              <ul>
+                <li>
+                  Average Temperature:
+                  <span id="daythree-avgtempc"></span>
+                </li>
+                <li>
+                  Max wind speed:
+                  <span id="daythree-maxwindmph"
+                    >forecast.forecastday[2].day.maxwind_mph</span
+                  >
+                </li>
+                <li>
+                  Sunrise:
+                  <span id="daythree-sunrise"></span>
+                </li>
+                <li>
+                  Sunset:
+                  <span id="daythree-sunset"> </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/weather.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
