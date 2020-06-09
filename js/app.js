@@ -1,88 +1,65 @@
 const weather = new Weather();
 
-const searchBtn = document.getElementById('search-btn');
-const locationInput = document.getElementById('location-input'),
-  resultsCont = document.getElementById('results-cont');
+const searchBtn = document.getElementById('search-button'),
+  locationInput = document.getElementById('location-input'),
+  resultsContainer = document.getElementById('results-container');
 
-// CURRENT GRID
-const locationResult = document.getElementById('location-result'),
-  currentTemp = document.getElementById('current-tempc'),
-  currentHum = document.getElementById('current-humidity'),
-  currentWind = document.getElementById('current-windmph'),
-  currentRise = document.getElementById('current-sunrise'),
-  currentSet = document.getElementById('current-sunset'),
-  currentConIcon = document.getElementById('current-condition-icon'),
-  currentCon = document.getElementById('current-condition');
-// DAY TWO GRID
-const dayTwoDate = document.getElementById('daytwo-date'),
-  dayTwoCon = document.getElementById('daytwo-condition'),
-  dayTwoConIcon = document.getElementById('daytwo-condition-icon'),
-  dayTwoAvgTemp = document.getElementById('daytwo-avgtempc'),
-  dayTwoMaxWind = document.getElementById('daytwo-maxwindmph'),
-  dayTwoRise = document.getElementById('daytwo-sunrise'),
-  dayTwoSet = document.getElementById('daytwo-sunset');
-// DAY THREE GRID
-const dayThreeDate = document.getElementById('daythree-date'),
-  dayThreeCon = document.getElementById('daythree-condition'),
-  dayThreeConIcon = document.getElementById('daythree-condition-icon'),
-  dayThreeAvgTemp = document.getElementById('daythree-avgtempc'),
-  dayThreeMaxWind = document.getElementById('daythree-maxwindmph'),
-  dayThreeRise = document.getElementById('daythree-sunrise'),
-  dayThreeSet = document.getElementById('daythree-sunset');
+const locationResult = document.getElementById('location');
+// DAY ONE
+const dayOneIcon = document.getElementById('day-one-icon'),
+  dayOneCondition = document.getElementById('day-one-condition'),
+  dayOneTemperature = document.getElementById('day-one-temperature'),
+  dayOneWind = document.getElementById('day-one-wind'),
+  dayOneRise = document.getElementById('day-one-rise'),
+  dayOneSet = document.getElementById('day-one-set');
+// DAY TWO
+const dayTwoIcon = document.getElementById('day-two-icon'),
+  dayTwoCondition = document.getElementById('day-two-condition'),
+  dayTwoTemperature = document.getElementById('day-two-temperature'),
+  dayTwoWind = document.getElementById('day-two-wind'),
+  dayTwoRise = document.getElementById('day-two-rise'),
+  dayTwoSet = document.getElementById('day-two-set'),
+  dayTwoDate = document.getElementById('day-two-date');
+// DAY THREE
+const dayThreeIcon = document.getElementById('day-three-icon'),
+  dayThreeCondition = document.getElementById('day-three-condition'),
+  dayThreeTemperature = document.getElementById('day-three-temperature'),
+  dayThreeWind = document.getElementById('day-three-wind'),
+  dayThreeRise = document.getElementById('day-three-rise'),
+  dayThreeSet = document.getElementById('day-three-set'),
+  dayThreeDate = document.getElementById('day-three-date');
 
 // EVENT LISTENER
 searchBtn.addEventListener('click', function (e) {
   if (locationInput !== '') {
-    resultsCont.style.display = 'flex';
+    resultsContainer.style.display = 'block';
     weather.getWeather(locationInput.value).then((data) => {
-      // CURRENT
       // Location result
-      locationResult.innerHTML = `${data.location.name}, ${data.location.region}, ${data.location.country}`;
-      // Condition result
-      currentCon.innerHTML = `${data.current.condition.text}`;
-      // Condition icon
-      currentConIcon.src = `${data.current.condition.icon}`;
-      // Current tempc
-      currentTemp.innerHTML = `${data.current.temp_c} °C`;
-      // Current Humidity
-      currentHum.innerHTML = `${data.current.humidity}`;
-      // Current Wind
-      currentWind.innerHTML = `${data.current.wind_mph}mph`;
-      // Current Sunrise
-      currentRise.innerHTML = `${data.forecast.forecastday[0].astro.sunrise}`;
-      // Current Sunset
-      currentSet.innerHTML = `${data.forecast.forecastday[0].astro.sunset}`;
+      locationResult.innerHTML = `${data.location.name}, ${data.location.country}`;
+      // DAY ONE
+      dayOneCondition.innerHTML = `${data.current.condition.text}`;
+      dayOneIcon.src = `http:${data.current.condition.icon}`;
+      dayOneTemperature.innerHTML = `${data.current.temp_c}`;
+      dayOneWind.innerHTML = `${data.current.wind_mph}mph`;
+      dayOneRise.innerHTML = `${data.forecast.forecastday[0].astro.sunrise}`;
+      dayOneSet.innerHTML = `${data.forecast.forecastday[0].astro.sunset}`;
 
       // DAY TWO
-      // Date
       dayTwoDate.innerHTML = `${data.forecast.forecastday[1].date}`;
-      // Condition
-      dayTwoCon.innerHTML = `${data.forecast.forecastday[1].day.condition.text}`;
-      // Condition Icon
-      dayTwoConIcon.src = `${data.forecast.forecastday[1].day.condition.icon}`;
-      // Average Temperature
-      dayTwoAvgTemp.innerHTML = `${data.forecast.forecastday[1].day.avgtemp_c}°C`;
-      // Max wind speed
-      dayTwoMaxWind.innerHTML = `${data.forecast.forecastday[1].day.maxwind_mph}mph`;
-      // Sunrise
+      dayTwoCondition.innerHTML = `${data.forecast.forecastday[1].day.condition.text}`;
+      dayTwoIcon.src = `${data.forecast.forecastday[1].day.condition.icon}`;
+      dayTwoTemperature.innerHTML = `${data.forecast.forecastday[1].day.avgtemp_c}`;
+      dayTwoWind.innerHTML = `${data.forecast.forecastday[1].day.maxwind_mph}mph`;
       dayTwoRise.innerHTML = `${data.forecast.forecastday[1].astro.sunrise}`;
-      // Sunset
       dayTwoSet.innerHTML = `${data.forecast.forecastday[1].astro.sunset}`;
 
       // DAY THREE
-      // Date
       dayThreeDate.innerHTML = `${data.forecast.forecastday[2].date}`;
-      // Condition
-      dayThreeCon.innerHTML = `${data.forecast.forecastday[2].day.condition.text}`;
-      // Condition Icon
-      dayThreeConIcon.src = `${data.forecast.forecastday[2].day.condition.icon}`;
-      // Average Temperature
-      dayThreeAvgTemp.innerHTML = `${data.forecast.forecastday[2].day.avgtemp_c}°C`;
-      // Max wind speed
-      dayThreeMaxWind.innerHTML = `${data.forecast.forecastday[2].day.maxwind_mph}mph`;
-      // Sunrise
+      dayThreeCondition.innerHTML = `${data.forecast.forecastday[2].day.condition.text}`;
+      dayThreeIcon.src = `${data.forecast.forecastday[2].day.condition.icon}`;
+      dayThreeTemperature.innerHTML = `${data.forecast.forecastday[2].day.avgtemp_c}`;
+      dayThreeWind.innerHTML = `${data.forecast.forecastday[2].day.maxwind_mph}mph`;
       dayThreeRise.innerHTML = `${data.forecast.forecastday[2].astro.sunrise}`;
-      // Sunset
       dayThreeSet.innerHTML = `${data.forecast.forecastday[2].astro.sunset}`;
     });
   }
