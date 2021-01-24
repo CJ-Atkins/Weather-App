@@ -3,21 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/6b5b0823f3.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="icons/style.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>GetWeather</title>
+    <title>Connor Atkins | WeatherApp</title>
   </head>
   <body>
     <!-- HEADER -->
     <header>
-      <div class="logo-container">
-        <div class="logo-image">
-          <img src="/imgs/Logo/logo.png" alt="logo" />
-        </div>
-      </div>
+      <div class="date-container"></div>
     </header>
 
     <!-- MAIN -->
@@ -30,77 +23,53 @@
             placeholder="Enter a location.."
           />
           <button type="submit" id="search-button">
-            <i class="fas fa-search"></i>
+            <i class="icon-search"></i>
           </button>
-          <div class="help-icon">
-            ?
-            <div class="help-container">
-              Search by City, US Zipcode, UK Postcode, CA Postalcode, IP address
-              or Latitude/Longitude (decimal degree)
-            </div>
-          </div>
         </form>
       </div>
 
+      <div class="location"><h3 id="location"></h3></div>
+
       <div class="results-container" id="results-container">
-        <div class="location" id="location"></div>
         <div class="results-days-container">
           <div class="results-day-container results-one-container">
-            <img id="day-one-icon" src="" alt="" />
-            <h3>TODAY</h3>
-            <h2 id="day-one-condition"></h2>
+            <h3>today</h3>
             <h1><span id="day-one-temperature"></span>°C</h1>
+            <div class="condition-icon-container">
+              <h2 id="day-one-condition"></h2>
+              <img id="day-one-icon" src="" alt="" />
+            </div>
             <ul>
-              <li>Wind Speed: <span id="day-one-wind"></span></li>
               <li>Sunrise: <span id="day-one-rise"></span></li>
               <li>Sunset: <span id="day-one-set"></span></li>
             </ul>
           </div>
           <div class="results-day-container results-two-container">
-            <img id="day-two-icon" src="" alt="" />
-            <h3 id="day-two-date"></h3>
-            <h2 id="day-two-condition"></h2>
+            <h3>tomorrow</h3>
             <h1><span id="day-two-temperature"></span>°C</h1>
+            <div class="condition-icon-container">
+              <h2 id="day-two-condition"></h2>
+              <img id="day-two-icon" src="" alt="" />
+            </div>
             <ul>
-              <li>Wind Speed: <span id="day-two-wind">23mph</span></li>
-              <li>Sunrise: <span id="day-two-rise">4:45am</span></li>
-              <li>Sunset: <span id="day-two-set">9:35pm</span></li>
-            </ul>
-          </div>
-          <div class="results-day-container results-three-container">
-            <img id="day-three-icon" src="" alt="" />
-            <h3 id="day-three-date"></h3>
-            <h2 id="day-three-condition"></h2>
-            <h1><span id="day-three-temperature"></span>°C</h1>
-            <ul>
-              <li>Wind Speed: <span id="day-three-wind"></span></li>
-              <li>Sunrise: <span id="day-three-rise"></span></li>
-              <li>Sunset: <span id="day-three-set"></span></li>
+              <li>Sunrise: <span id="day-two-rise"></span></li>
+              <li>Sunset: <span id="day-two-set"></span></li>
             </ul>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="logo-container">
-        <div class="logo-image">
-          <img src="imgs/Logo/logo.png" alt="background image" />
-        </div>
-      </div>
-    </footer>
-
-    <!-- BACKGROUND IMAGES -->
-    <div class="mobile-background-image">
-      <img src="imgs/133823.jpg" alt="logo" />
-    </div>
-    <div class="desktop-background-image">
-      <img src="imgs/20200528_140936.jpg" alt="background-image" />
-    </div>
+    <!-- BACKGROUND IMAGE -->
+    <div class="background-image"></div>
 
     <script src="js/weather.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
+    <script src="libraries/moment/moment.min.js"></script>
+    <script>
+      const dateCont = document.querySelector(".date-container");
+      dateCont.innerHTML = moment().format("LL");
+    </script>
   </body>
 </html>
