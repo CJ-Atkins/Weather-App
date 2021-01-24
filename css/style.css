@@ -25,7 +25,7 @@ body {
 }
 
 .background-image {
-  background-image: url(/images/pexels-pixabay-459225.jpg);
+  background-image: url("../images/lake-mountains.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
